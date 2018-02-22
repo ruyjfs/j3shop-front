@@ -2,6 +2,14 @@
 
 > A Vue.js project
 
+Docker
+
+    docker run -it -v /var/www:/var/www --name node-front -p 80:8080 ryubr/node-front
+
+In container
+
+    apk add --update --upgrade git nodejs nodejs-npm && npm install -g yarn vue-cli 
+
 ## Build Setup
 
 ``` bash

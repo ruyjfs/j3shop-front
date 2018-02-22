@@ -1,6 +1,6 @@
 # j3shop-front
 
-> A Vue.js project
+> A Front shop project whit Vue.js and Vuetfy
 
 Docker
 

@@ -2,12 +2,12 @@
   <v-app dark>
     <v-navigation-drawer persistent :mini-variant="miniVariant" :clipped="clipped" v-model="drawer" enable-resize-watcher fixed app>
       <v-list>
-        <v-list-tile v-for="(item, i) in items" :key="i" value="true" :to="item.link" ripple="true">
+        <v-list-tile v-for="(item, i) in items" :key="i" value="true" :to="item.link" ripple>
           <v-list-tile-action >
             <v-icon v-html="item.icon"></v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title v-text="item.title"></v-list-tile-title>
+            <v-list-tile-title v-text="$t(item.title)"></v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
@@ -25,11 +25,21 @@
       </v-btn> -->
       <v-toolbar-title v-text="title"></v-toolbar-title>
       <v-spacer></v-spacer>
+      <v-toolbar-items class="hidden-sm-and-down">
+        <v-menu offset-y>
+          <v-btn flat dark slot="activator"><img src="http://www.countryflags.io/br/flat/32.png"></v-btn>
+          <v-list>
+            <v-list-tile v-for="item in arrMenuTranslate" :key="item.title" v-on:click="translate(item.param)">
+              <v-list-tile-avatar :tile="true"><img :src="item.img" /></v-list-tile-avatar>
+              <v-list-tile-title>{{$t(item.title)}}</v-list-tile-title>
+            </v-list-tile>
+          </v-list>
+        </v-menu>
+      </v-toolbar-items>
       <v-btn icon @click.stop="rightDrawer = !rightDrawer">
         <v-icon>menu</v-icon>
       </v-btn>
     </v-toolbar>
-
     <v-content>
       <v-container fluid>
         <transition mode="out-in" name="fade">
@@ -37,7 +47,6 @@
         </transition>
       </v-container>
     </v-content>
-
     <v-navigation-drawer temporary :right="right" v-model="rightDrawer" fixed app>
       <v-list>
         <v-list-tile @click="right = !right">
@@ -54,8 +63,8 @@
     </v-footer>
   </v-app>
 </template>
-
 <script>
+import Vue from 'vue'
 
 export default {
   data () {
@@ -69,16 +78,24 @@ export default {
         {title: 'Contact', icon: 'edit', link: '/contact'},
         {title: 'About', icon: 'question_answer', link: '/about'}
       ],
+      arrMenuTranslate: [
+        {title: 'Portuguese', img: 'http://www.countryflags.io/br/flat/32.png', icon: 'dashboard', param: 'ptBr'},
+        {title: 'English', img: 'http://www.countryflags.io/us/flat/32.png', icon: 'question_answer', param: 'enUs'}
+      ],
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'j3shop'
+      title: 'Shop'
     }
   },
-  name: 'App'
+  name: 'App',
+  methods: {
+    translate (strLang) {
+      Vue.i18n.set(strLang)
+    }
+  }
 }
 </script>
-
 <style>
   .application .theme--dark.toolbar, .theme--dark .toolbar {
     background: linear-gradient(141deg,#212121, #393939 51%,#212121 75%);

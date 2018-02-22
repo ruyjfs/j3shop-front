@@ -4,10 +4,10 @@
       <v-layout column align-center>
         <img src="@/assets/logo.png" alt="Vuetify.js" class="mb-5">
         <blockquote>
-          RUY
+          
           <footer>
             <small>
-              <em>&mdash;John Johnson</em>
+              <em>&mdash;RUY</em>
             </small>
           </footer>
         </blockquote>

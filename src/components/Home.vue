@@ -18,6 +18,15 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+/* <template>
+  <div class="parent">
+    <h2>Parent</h2>
+    <transition :name="fade">
+      <router-view class="child-view"></router-view>
+    </transition>
+  </div>
+</template> */
+
 h1, h2 {
   font-weight: normal;
 }
@@ -33,3 +42,4 @@ a {
   color: #42b983;
 }
 </style>
+

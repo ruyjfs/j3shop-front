@@ -4,7 +4,7 @@
 
 Docker
 
-    docker run -it -v /var/www:/var/www --name node-front -p 80:8080 ryubr/node-front
+    docker run -it -v /var/www:/var/www --name vuejs -p 80:8080 alpine
 
 In container
 
